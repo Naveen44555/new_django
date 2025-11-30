@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class Students(models.Model):
     name=models.CharField(max_length=100)
@@ -12,9 +11,9 @@ class Students(models.Model):
 # It tells Django: “Create a table called employees in the database.”
 class movies_review(models.Model): #models.Model is a built-in Django class that gives your class all the features of a database table.
     movie=models.CharField(max_length=100)   #CharField = used for short text.
-    collections=models.IntegerField()   #(don’t use commas)
+    collections=models.IntegerField()   #(don’t use commas) IntegerField does NOT support max_length.
     r_date=models.CharField(max_length=100)
-    ratings=models.IntegerField(default=0)
+    ratings=models.FloatField(default=0)
 
 
 # IntegerField does NOT support max_length.
@@ -35,3 +34,7 @@ class employees(models.Model):
     date=models.DateField()
     location=models.CharField(max_length=100)
     
+class basic_users_login(models.Model):
+    username = models.CharField(max_length=100)
+    email = models.CharField(max_length=40,unique=True)
+    password = models.CharField(max_length=100)
